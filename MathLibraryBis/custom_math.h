@@ -109,15 +109,10 @@ namespace poke {
 			return 3.141592653f;
 		}
 
-		static float Rad2Deg(float radian)
-		{
-			return radian * 180 / PI();
-		}
+		const static float Rad2Deg = 180 / PI();
 
-		static float Deg2Rad(float degree)
-		{
-			return degree * PI() / 180;
-		}
+		const static float Deg2Rad = PI() / 180;
+		
 	}
 }
 #endif

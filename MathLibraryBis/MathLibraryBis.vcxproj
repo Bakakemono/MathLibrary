@@ -117,10 +117,12 @@
   <ItemGroup>
     <ClCompile Include="custom_vector.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="matrix.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="custom_math.h" />
     <ClInclude Include="custom_vector.h" />
+    <ClInclude Include="matrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
