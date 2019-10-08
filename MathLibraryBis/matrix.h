@@ -7,7 +7,7 @@
 namespace poke {
 	class Matrix2 {
 	public:
-		Matrix2(int const& value);
+		Matrix2(float const& value);
 		Matrix2(poke::Vector2 v1, poke::Vector2 v2);
 
 		Matrix2 operator* (Matrix2 const& matrix2);

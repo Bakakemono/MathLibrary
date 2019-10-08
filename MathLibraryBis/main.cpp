@@ -6,9 +6,9 @@
 
 int main()
 {
-	std::cout << sizeof(poke::Matrix2) << "\n";
+	poke::Vector3 test(1, 1, 1);
 
-
+	std::cout << &test.x << " / " << &test.y << " / " << &test.z << "\n";
 
 	system("pause");
 	return EXIT_SUCCESS;
