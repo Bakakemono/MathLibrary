@@ -157,6 +157,7 @@ namespace poke {
 		return Vector4(this->x / value, this->y / value, this->z / value, this->w / value);
 	}
 #pragma endregion
+	
 
 #pragma region Vector2Int
 	Vector2Int::Vector2Int(int x, int y) : x(x), y(y) {}
@@ -297,6 +298,7 @@ namespace poke {
 	}
 #pragma endregion
 
+
 #pragma region Vector2Short
 	Vector2Short::Vector2Short(short x, short y) : x(x), y(y) {}
 
@@ -404,42 +406,42 @@ namespace poke {
 
 	Vector4Short Vector4Short::operator+(Vector2Short const & v2)
 	{
-		return Vector4Short();
+		return Vector4Short(this->x + v2.x, this->y + v2.y, this->z, this->w);
 	}
 
 	Vector4Short Vector4Short::operator+(Vector3Short const & v3)
 	{
-		return Vector4Short();
+		return Vector4Short(this->x + v3.x, this->y + v3.y, this->z + v3.z, this->w);
 	}
 	 
 	Vector4Short Vector4Short::operator+(Vector4Short const & v4)
 	{
-		return Vector4Short();
+		return Vector4Short(this->x + v4.x, this->y + v4.y, this->z + v4.z, this->w + v4.w);
 	}
 
 	Vector4Short Vector4Short::operator-(Vector2Short const & v2)
 	{
-		return Vector4Short();
+		return Vector4Short(this->x - v2.x, this->y - v2.y, this->z, this->w);
 	}
 
 	Vector4Short Vector4Short::operator-(Vector3Short const & v3)
 	{
-		return Vector4Short();
+		return Vector4Short(this->x - v3.x, this->y - v3.y, this->z - v3.z, this->w);
 	}
 
 	Vector4Short Vector4Short::operator-(Vector4Short const & v4)
 	{
-		return Vector4Short();
+		return Vector4Short(this->x - v4.x, this->y - v4.y, this->z - v4.z, this->w - v4.w);
 	}
 
 	Vector4 Vector4Short::operator*(float const & value)
 	{
-		return Vector4();
+		return Vector4(this->x * value, this->y * value, this->z * value, this->w * value);
 	}
 
 	Vector4 Vector4Short::operator/(float const & value)
 	{
-		return Vector4();
+		return Vector4(this->x / value, this->y / value, this->z / value, this->w / value);
 	}
 #pragma endregion 
 }
