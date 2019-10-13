@@ -39,7 +39,7 @@ namespace poke {
 		Matrix4(std::array<float, 16> const newMatrix);
 		Matrix4(poke::Vector4 v1, poke::Vector4 v2, poke::Vector4 v3, poke::Vector4 v4);
 
-		std::array<float*, 4> operator[](int indexColumn);
+		float& operator[](int index);
 
 		Matrix4 operator* (Matrix4& matrix4);
 

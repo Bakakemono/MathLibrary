@@ -113,48 +113,82 @@ namespace poke {
 #pragma endregion 
 
 #pragma region Vector4
-	Vector4::Vector4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
-
-	Vector4 Vector4::operator+(Vector2 const & v2)
+	Vector4::Vector4(float x, float y, float z, float w)
 	{
-		return Vector4(this->x + v2.x, this->y + v2.y, this->z, this->w);
+		vector_[0] = x;
+		vector_[1] = y;
+		vector_[2] = z;
+		vector_[3] = w;
 	}
 
-	Vector4 Vector4::operator+(Vector3 const & v3)
+	Vector4::Vector4(std::array<float&, 4> newArray)
 	{
-		return Vector4(this->x + v3.x, this->y + v3.y, this->z + v3.z, this->w);
+		vector_[0] = newArray[0];
+		vector_[1] = newArray[1];
+		vector_[2] = newArray[2];
+		vector_[3] = newArray[3];
 	}
 
-	Vector4 Vector4::operator+(Vector4 const & v4)
+	float& Vector4::x()
 	{
-		return Vector4(this->x + v4.x, this->y + v4.y, this->z + v4.z, this->w + v4.w);
+		return vector_[0];
+	}
+
+	float& Vector4::y()
+	{
+		return vector_[1];
+	}
+
+	float& Vector4::z()
+	{
+		return vector_[2];
+	}
+
+	float& Vector4::w()
+	{
+		return vector_[3];
+	}
+
+	Vector4 Vector4::operator+(Vector2& v2)
+	{
+		return Vector4(this->x() + v2.x, this->y() + v2.y, this->z(), this->w());
+	}
+
+	Vector4 Vector4::operator+(Vector3& v3)
+	{
+		return Vector4(this->x() + v3.x, this->y() + v3.y, this->z() + v3.z, this->w());
+	}
+
+	Vector4 Vector4::operator+(Vector4& v4)
+	{
+		return Vector4(this->x() + v4.x(), this->y() + v4.y(), this->z() + v4.z(), this->w() + v4.w());
 	}
 
 
-	Vector4 Vector4::operator-(Vector2 const & v2)
+	Vector4 Vector4::operator-(Vector2& v2)
 	{
-		return Vector4(this->x - v2.x, this->y - v2.y, this->z, this->w);
+		return Vector4(this->x() - v2.x, this->y() - v2.y, this->z(), this->w());
 	}
 
-	Vector4 Vector4::operator-(Vector3 const & v3)
+	Vector4 Vector4::operator-(Vector3& v3)
 	{
-		return Vector4(this->x - v3.x, this->y - v3.y, this->z - v3.z, this->w);
+		return Vector4(this->x() - v3.x, this->y() - v3.y, this->z() - v3.z, this->w());
 	}
 
-	Vector4 Vector4::operator-(Vector4 const & v4)
+	Vector4 Vector4::operator-(Vector4& v4)
 	{
-		return Vector4(this->x - v4.x, this->y - v4.y, this->z - v4.z, this->w - v4.w);
+		return Vector4(this->x() - v4.x(), this->y() - v4.y(), this->z() - v4.z(), this->w() - v4.w());
 	}
 
 
 	Vector4 Vector4::operator*(float const & value)
 	{
-		return Vector4(this->x * value, this->y * value, this->z * value, this->w * value);
+		return Vector4(this->x() * value, this->y() * value, this->z() * value, this->w() * value);
 	}
 
 	Vector4 Vector4::operator/(float const & value)
 	{
-		return Vector4(this->x / value, this->y / value, this->z / value, this->w / value);
+		return Vector4(this->x() / value, this->y() / value, this->z() / value, this->w() / value);
 	}
 #pragma endregion
 	
@@ -400,9 +434,7 @@ namespace poke {
 #pragma endregion 
 
 #pragma region Vector4Short
-	Vector4Short::Vector4Short(short x, short y, short z, short w)
-	{
-	}
+	Vector4Short::Vector4Short(short x, short y, short z, short w) : x(x), y(y), z(z), w(w) {}
 
 	Vector4Short Vector4Short::operator+(Vector2Short const & v2)
 	{

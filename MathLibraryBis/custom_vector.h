@@ -1,5 +1,6 @@
 #ifndef CUSTOM_VECTOR_H
 #define CUSTOM_VECTOR_H
+#include <array>
 
 namespace poke {
 
@@ -49,19 +50,26 @@ namespace poke {
 	class Vector4 {
 	public:
 		Vector4(float x, float y, float z, float w);
+		Vector4(std::array<float&, 4> newArray);
 
-		Vector4 operator+ (Vector2 const& v2);
-		Vector4 operator+ (Vector3 const& v3);
-		Vector4 operator+ (Vector4 const& v4);
+		float& x();
+		float& y();
+		float& z();
+		float& w();
 
-		Vector4 operator- (Vector2 const& v2);
-		Vector4 operator- (Vector3 const& v3);
-		Vector4 operator- (Vector4 const& v4);
+		Vector4 operator+ (Vector3& v3);
+		Vector4 operator+ (Vector2& v2);
+		Vector4 operator+ (Vector4& v4);
+
+		Vector4 operator- (Vector2& v2);
+		Vector4 operator- (Vector3& v3);
+		Vector4 operator- (Vector4& v4);
 
 		Vector4 operator* (float const& value);
 		Vector4 operator/ (float const& value);
 
-		float x, y, z, w;
+	private:
+		std::array<float, 4> vector_;
 	};
 
 	class Vector2Int {

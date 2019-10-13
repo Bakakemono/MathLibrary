@@ -126,38 +126,34 @@ namespace poke {
 		};						   
 	}							   
 								   
-	std::array<float*, 4> Matrix4::operator[](int indexColumn)
+	float& Matrix4::operator[](int index)
 	{
-		return { 
-			&matrix[4 * indexColumn], 
-			&matrix[4 * indexColumn + 1],
-			&matrix[4 * indexColumn + 2], 
-			&matrix[4 * indexColumn + 3]
-		};
+		return &matrix[index];
 	}
 
 	Matrix4 Matrix4::operator*(Matrix4& matrix4)
 	{
+		float i = matrix4[1][1];
 		return Matrix4({
-			matrix[0] * *matrix4[0][0] + matrix[4] * *matrix4[0][1] + matrix[8]  * *matrix4[0][2] + matrix[12] * *matrix4[0][3], // column 1
-			matrix[1] * *matrix4[0][0] + matrix[5] * *matrix4[0][1] + matrix[9]  * *matrix4[0][2] + matrix[13] * *matrix4[0][3],
-			matrix[2] * *matrix4[0][0] + matrix[6] * *matrix4[0][1] + matrix[10] * *matrix4[0][2] + matrix[14] * *matrix4[0][3],
-			matrix[3] * *matrix4[0][0] + matrix[7] * *matrix4[0][1] + matrix[11] * *matrix4[0][2] + matrix[15] * *matrix4[0][3],
-							  					  								   								 
-			matrix[0] * *matrix4[1][0] + matrix[4] * *matrix4[1][1] + matrix[8]  * *matrix4[1][2] + matrix[12] * *matrix4[1][3], // column 2
-			matrix[1] * *matrix4[1][0] + matrix[5] * *matrix4[1][1] + matrix[9]  * *matrix4[1][2] + matrix[13] * *matrix4[1][3],
-			matrix[2] * *matrix4[1][0] + matrix[6] * *matrix4[1][1] + matrix[10] * *matrix4[1][2] + matrix[14] * *matrix4[1][3],
-			matrix[3] * *matrix4[1][0] + matrix[7] * *matrix4[1][1] + matrix[11] * *matrix4[1][2] + matrix[15] * *matrix4[1][3],
-					 							   								   								 
-			matrix[0] * *matrix4[2][0] + matrix[4] * *matrix4[2][1] + matrix[8]  * *matrix4[2][2] + matrix[12] * *matrix4[2][3], // column 3
-			matrix[1] * *matrix4[2][0] + matrix[5] * *matrix4[2][1] + matrix[9]  * *matrix4[2][2] + matrix[13] * *matrix4[2][3],
-			matrix[2] * *matrix4[2][0] + matrix[6] * *matrix4[2][1] + matrix[10] * *matrix4[2][2] + matrix[14] * *matrix4[2][3],
-			matrix[3] * *matrix4[2][0] + matrix[7] * *matrix4[2][1] + matrix[11] * *matrix4[2][2] + matrix[15] * *matrix4[2][3],
-													 							   								 
-			matrix[0] * *matrix4[3][0] + matrix[4] * *matrix4[3][1] + matrix[8]  * *matrix4[3][2] + matrix[12] * *matrix4[3][3], // column 4
-			matrix[1] * *matrix4[3][0] + matrix[5] * *matrix4[3][1] + matrix[9]  * *matrix4[3][2] + matrix[13] * *matrix4[3][3],
-			matrix[2] * *matrix4[3][0] + matrix[6] * *matrix4[3][1] + matrix[10] * *matrix4[3][2] + matrix[14] * *matrix4[3][3],
-			matrix[3] * *matrix4[3][0] + matrix[7] * *matrix4[3][1] + matrix[11] * *matrix4[3][2] + matrix[15] * *matrix4[3][3],
+			matrix[0] * matrix4[0][0] + matrix[4] * matrix4[0][1] + matrix[8]  * matrix4[0][2] + matrix[12] * matrix4[0][3], // column 1
+			matrix[1] * matrix4[0][0] + matrix[5] * matrix4[0][1] + matrix[9]  * matrix4[0][2] + matrix[13] * matrix4[0][3],
+			matrix[2] * matrix4[0][0] + matrix[6] * matrix4[0][1] + matrix[10] * matrix4[0][2] + matrix[14] * matrix4[0][3],
+			matrix[3] * matrix4[0][0] + matrix[7] * matrix4[0][1] + matrix[11] * matrix4[0][2] + matrix[15] * matrix4[0][3],
+						  					  							   							 
+			matrix[0] * matrix4[1][0] + matrix[4] * matrix4[1][1] + matrix[8]  * matrix4[1][2] + matrix[12] * matrix4[1][3], // column 2
+			matrix[1] * matrix4[1][0] + matrix[5] * matrix4[1][1] + matrix[9]  * matrix4[1][2] + matrix[13] * matrix4[1][3],
+			matrix[2] * matrix4[1][0] + matrix[6] * matrix4[1][1] + matrix[10] * matrix4[1][2] + matrix[14] * matrix4[1][3],
+			matrix[3] * matrix4[1][0] + matrix[7] * matrix4[1][1] + matrix[11] * matrix4[1][2] + matrix[15] * matrix4[1][3],
+					 						   							   							 
+			matrix[0] * matrix4[2][0] + matrix[4] * matrix4[2][1] + matrix[8]  * matrix4[2][2] + matrix[12] * matrix4[2][3], // column 3
+			matrix[1] * matrix4[2][0] + matrix[5] * matrix4[2][1] + matrix[9]  * matrix4[2][2] + matrix[13] * matrix4[2][3],
+			matrix[2] * matrix4[2][0] + matrix[6] * matrix4[2][1] + matrix[10] * matrix4[2][2] + matrix[14] * matrix4[2][3],
+			matrix[3] * matrix4[2][0] + matrix[7] * matrix4[2][1] + matrix[11] * matrix4[2][2] + matrix[15] * matrix4[2][3],
+												 						   							 
+			matrix[0] * matrix4[3][0] + matrix[4] * matrix4[3][1] + matrix[8]  * matrix4[3][2] + matrix[12] * matrix4[3][3], // column 4
+			matrix[1] * matrix4[3][0] + matrix[5] * matrix4[3][1] + matrix[9]  * matrix4[3][2] + matrix[13] * matrix4[3][3],
+			matrix[2] * matrix4[3][0] + matrix[6] * matrix4[3][1] + matrix[10] * matrix4[3][2] + matrix[14] * matrix4[3][3],
+			matrix[3] * matrix4[3][0] + matrix[7] * matrix4[3][1] + matrix[11] * matrix4[3][2] + matrix[15] * matrix4[3][3],
 			}																									 
 		);
 	}
@@ -185,6 +181,7 @@ namespace poke {
 		*rotate[2][2] = angleSin + temp.z * axis.z;
 
 		Matrix4 result(0);
+
 		result[0] = modelMatrix[0] * rotate[0][0] + modelMatrix[1] * rotate[0][1] + modelMatrix[2] * rotate[0][2];
 		result[1] = modelMatrix[0] * rotate[1][0] + modelMatrix[1] * rotate[1][1] + modelMatrix[2] * rotate[1][2];
 		result[2] = modelMatrix[0] * rotate[2][0] + modelMatrix[1] * rotate[2][1] + modelMatrix[2] * rotate[2][2];
