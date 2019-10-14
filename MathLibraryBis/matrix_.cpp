@@ -171,7 +171,7 @@ namespace poke {
 		matrix_[index * 4 + 3] = newValue.w();
 	}
 
-	Matrix4 Matrix4::operator*(Matrix4& matrix4)
+	Matrix4 Matrix4::operator*(Matrix4 matrix4)
 	{
 		Matrix4 result(0.0f);
 

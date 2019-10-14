@@ -53,7 +53,7 @@ namespace poke {
 		Vector4 GetColumn(int index) const;
 		void SetColumn(int index, Vector4 newValue);
 
-		Matrix4 operator* (Matrix4& matrix4);
+		Matrix4 operator* (Matrix4 matrix4);
 
 		static Matrix4 Rotate(const Matrix4 modelMatrix, const float angle, Vector3 axis);
 		static Matrix4 Translate(const Matrix4 modelMatrix, Vector3 position);

@@ -41,7 +41,7 @@ namespace poke {
 		vector_[1] -= v2.y();
 	}
 
-	Vector2 Vector2::operator*(float const & value)
+	Vector2 Vector2::operator*(float const& value)
 	{
 		return Vector2(x() * value, y() * value);
 	}
@@ -52,7 +52,7 @@ namespace poke {
 		vector_[1] *= value;
 	}
 
-	Vector2 Vector2::operator/(float const & value)
+	Vector2 Vector2::operator/(float const& value)
 	{
 		return Vector2(x() / value, y() / value);
 	}
