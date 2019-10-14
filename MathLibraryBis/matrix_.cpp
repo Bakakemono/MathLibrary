@@ -4,7 +4,7 @@ namespace poke {
 #pragma region Matrix 2x2
 	Matrix2::Matrix2(float const & value)
 	{
-		matrix = {
+		matrix_ = {
 			value, value, // column 1
 			value, value  // column 2
 		};
@@ -12,41 +12,57 @@ namespace poke {
 
 	Matrix2::Matrix2(std::array<float, 4> const newMatrix)
 	{
-		matrix = newMatrix;
+		matrix_ = newMatrix;
 	}
 	 
 	Matrix2::Matrix2(poke::Vector2 v1, poke::Vector2 v2)
 	{
-		matrix = {
+		matrix_ = {
 			v1.x(), v1.y(), // column 1
 			v2.x(), v2.y()  // column 2
 		};
 	}
 
-	std::array<float, 2> Matrix2::operator[](int indexColumn)
+	float& Matrix2::operator[](int index)
 	{
-		return {
-			matrix[2 * indexColumn],
-			matrix[2 * indexColumn + 1]
-		};
+		return matrix_[index];
 	}
 
-	Matrix2 Matrix2::operator*(Matrix2& matrix2)
+	float& Matrix2::GetValue(int x, int y)
 	{
-		return Matrix2({
-			matrix[0] * matrix2[0][0] + matrix[2] * matrix2[0][1], // column 1
-			matrix[1] * matrix2[0][0] + matrix[3] * matrix2[0][1],
-			
-			matrix[0] * matrix2[0][1] + matrix[2] * matrix2[1][1], // column 2
-			matrix[1] * matrix2[0][1] + matrix[3] * matrix2[1][1]
-		});
+		return matrix_[x * 2 + y];
+	}
+
+	Vector2 Matrix2::GetColumn(int index) const
+	{
+		return Vector2(matrix_[index * 2], matrix_[index * 2 + 1]);
+	}
+
+	void Matrix2::SetColumn(int index, Vector2 newValue)
+	{
+		matrix_[index * 2] = newValue.x();
+		matrix_[index * 2 + 1] = newValue.y();
+	}
+
+	Matrix2 Matrix2::operator*(Matrix2 matrix2)
+	{
+		Matrix2 result(0.0f);
+
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < 2; j++) {
+				result[i * 2 + j] =
+					matrix_[j] * matrix2.GetValue(i, 0) +
+					matrix_[2 + j] * matrix2.GetValue(i, 1);
+			}
+		}
+		return result;
 	}
 #pragma endregion
 
 #pragma region Matrix 3x3
 	Matrix3::Matrix3(float const& value)
 	{
-		matrix = {
+		matrix_ = {
 			value, value, value, // column 1
 			value, value, value, // column 2
 			value, value, value  // column 3
@@ -55,43 +71,54 @@ namespace poke {
 
 	Matrix3::Matrix3(std::array<float, 9> const newMatrix)
 	{
-		matrix = newMatrix;
+		matrix_ = newMatrix;
 	}
 
 	Matrix3::Matrix3(poke::Vector3 v1, poke::Vector3 v2, poke::Vector3 v3)
 	{
-		matrix = { 
+		matrix_ = { 
 			v1.x(), v1.y(), v1.z(), // column 1
 			v2.x(), v2.y(), v2.z(), // column 2
 			v3.x(), v3.y(), v3.z()  // column 3
 		};
 	}
 
-	std::array<float, 3> Matrix3::operator[](int indexColumn)
+	float& Matrix3::operator[](int index)
 	{
-		return {
-			matrix[3 * indexColumn],
-			matrix[3 * indexColumn + 1],
-			matrix[3 * indexColumn + 2]
-		};
+		return matrix_[index];
 	}
 
-	Matrix3 Matrix3::operator*(Matrix3& matrix3)
+	float& Matrix3::GetValue(int x, int y)
 	{
-		return Matrix3({
-			matrix[0] * matrix3[0][0] + matrix[3] * matrix3[0][1] + matrix[6] * matrix3[0][2], // column 1
-			matrix[1] * matrix3[0][0] + matrix[4] * matrix3[0][1] + matrix[7] * matrix3[0][2],
-			matrix[2] * matrix3[0][0] + matrix[5] * matrix3[0][1] + matrix[8] * matrix3[0][2],
+		return matrix_[x * 3 + y];
+	}
 
-			matrix[0] * matrix3[1][0] + matrix[3] * matrix3[1][1] + matrix[6] * matrix3[1][2], // column 2
-			matrix[1] * matrix3[1][0] + matrix[4] * matrix3[1][1] + matrix[7] * matrix3[1][2],
-			matrix[2] * matrix3[1][0] + matrix[5] * matrix3[1][1] + matrix[8] * matrix3[1][2],
+	Vector3 Matrix3::GetColumn(int index) const
+	{
+		return Vector3(matrix_[index * 3], matrix_[index * 3 + 1], matrix_[index * 3 + 1]);
 
-			matrix[0] * matrix3[2][0] + matrix[3] * matrix3[2][1] + matrix[6] * matrix3[2][2], // column 3
-			matrix[1] * matrix3[2][0] + matrix[4] * matrix3[2][1] + matrix[7] * matrix3[2][2],
-			matrix[2] * matrix3[2][0] + matrix[5] * matrix3[2][1] + matrix[8] * matrix3[2][2]
+	}
+
+	void Matrix3::SetColumn(int index, Vector3 newValue)
+	{
+		matrix_[index * 3] = newValue.x();
+		matrix_[index * 3 + 1] = newValue.y();
+		matrix_[index * 3 + 2] = newValue.z();
+	}
+
+	Matrix3 Matrix3::operator*(Matrix3 matrix3)
+	{
+		Matrix3 result(0.0f);
+
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				result[i * 3 + j] =
+					matrix_[j] *		matrix3.GetValue(i, 0) +
+					matrix_[3 + j] *	matrix3.GetValue(i, 1) +
+					matrix_[6 + j] *	matrix3.GetValue(i, 2);
 			}
-		);
+		}
+		return result;
 	}
 #pragma endregion 
 
@@ -111,7 +138,7 @@ namespace poke {
 		matrix_ = newMatrix;
 	}
 
-	Matrix4::Matrix4(poke::Vector4& v1, poke::Vector4& v2, poke::Vector4& v3, poke::Vector4& v4)
+	Matrix4::Matrix4(poke::Vector4 v1, poke::Vector4 v2, poke::Vector4 v3, poke::Vector4 v4)
 	{
 		matrix_ = {
 			v1.x(), v1.y(), v1.z(), v1.w(), // column 1
@@ -151,9 +178,9 @@ namespace poke {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
 				result[i * 4 + j] = 
-					matrix_[j] *			matrix4.GetValue(i, 0) +
-					matrix_[4 + j] *		matrix4.GetValue(i, 1) +
-					matrix_[8 + j] *		matrix4.GetValue(i, 2) +
+					matrix_[j] *		matrix4.GetValue(i, 0) +
+					matrix_[4 + j] *	matrix4.GetValue(i, 1) +
+					matrix_[8 + j] *	matrix4.GetValue(i, 2) +
 					matrix_[12 + j] *	matrix4.GetValue(i, 3);
 			}
 		}

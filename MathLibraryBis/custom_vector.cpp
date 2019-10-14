@@ -19,23 +19,23 @@ namespace poke {
 		return vector_[1];
 	}
 
-	Vector2 Vector2::operator+(Vector2& v2)
+	Vector2 Vector2::operator+(Vector2 v2)
 	{
 		return Vector2(x() + v2.x(), y() + v2.y());
 	}
 
-	void Vector2::operator+=(Vector2& v2)
+	void Vector2::operator+=(Vector2 v2)
 	{
 		vector_[0] += v2.x();
 		vector_[1] += v2.y();
 	}
 
-	Vector2 Vector2::operator-(Vector2& v2)
+	Vector2 Vector2::operator-(Vector2 v2)
 	{
 		return Vector2(x() - v2.x(), y() - v2.y());
 	}
 
-	void Vector2::operator-=(Vector2& v2)
+	void Vector2::operator-=(Vector2 v2)
 	{
 		vector_[0] -= v2.x();
 		vector_[1] -= v2.y();
@@ -73,17 +73,17 @@ namespace poke {
 		return Vector2(x(), y()) / GetMagnitude();
 	}
 
-	float Vector2::Cross(Vector2& v1, Vector2& v2)
+	float Vector2::Cross(Vector2 v1, Vector2 v2)
 	{
 		return (v1.x() * v2.y()) - (v1.y() * v2.x());
 	}
 
-	float Vector2::GetDistance(Vector2 & begin, Vector2 & end)
+	float Vector2::GetDistance(Vector2 begin, Vector2 end)
 	{
 		return (end - begin).GetMagnitude();
 	}
 
-	float Vector2::GetDistanceManhattan(Vector2 & begin, Vector2 & end)
+	float Vector2::GetDistanceManhattan(Vector2 begin, Vector2 end)
 	{
 		return abs(end.x() - begin.x() + end.y() - begin.y());
 	}
@@ -112,46 +112,46 @@ namespace poke {
 		return vector_[2];
 	}
 
-	Vector3 Vector3::operator+(Vector2& v2)
+	Vector3 Vector3::operator+(Vector2 v2)
 	{
 		return Vector3(x() + v2.x(), y() + v2.y(), z());
 	}
 
-	Vector3 Vector3::operator+(Vector3& v3)
+	Vector3 Vector3::operator+(Vector3 v3)
 	{
 		return Vector3(x() + v3.x(), y() + v3.y(), z() + v3.z());
 	}
 
-	void Vector3::operator+=(Vector2& v2)
+	void Vector3::operator+=(Vector2 v2)
 	{
 		vector_[0] += v2.x();
 		vector_[1] += v2.y();
 	}
 
-	void Vector3::operator+=(Vector3& v3)
+	void Vector3::operator+=(Vector3 v3)
 	{
 		vector_[0] += v3.x();
 		vector_[1] += v3.y();
 		vector_[2] += v3.z();
 	}
 
-	Vector3 Vector3::operator-(Vector2& v2)
+	Vector3 Vector3::operator-(Vector2 v2)
 	{
 		return Vector3(x() - v2.x(), y() - v2.y(), z());
 	}
 
-	Vector3 Vector3::operator-(Vector3& v3)
+	Vector3 Vector3::operator-(Vector3 v3)
 	{
 		return Vector3(x() - v3.x(), y() - v3.y(), z() - v3.z());
 	}
 
-	void Vector3::operator-=(Vector2& v2)
+	void Vector3::operator-=(Vector2 v2)
 	{
 		vector_[0] -= v2.x();
 		vector_[1] -= v2.y();
 	}
 
-	void Vector3::operator-=(Vector3& v3)
+	void Vector3::operator-=(Vector3 v3)
 	{
 		vector_[0] -= v3.x();
 		vector_[1] -= v3.y();
@@ -202,12 +202,12 @@ namespace poke {
 		return v1.x() * v2.x() + v1.y() * v2.y();
 	}
 
-	float Vector3::GetDistance(Vector3 & begin, Vector3 & end)
+	float Vector3::GetDistance(Vector3 begin, Vector3 end)
 	{
 		return (end - begin).GetMagnitude();
 	}
 
-	float Vector3::GetDistanceManhattan(Vector3 & begin, Vector3 & end)
+	float Vector3::GetDistanceManhattan(Vector3 begin, Vector3 end)
 	{
 		return abs(end.x() - begin.x() + end.y() - begin.y() + end.z() - begin.z());
 	}
@@ -252,17 +252,17 @@ namespace poke {
 
 	Vector4 Vector4::operator+(Vector2 v2)
 	{
-		return Vector4(this->x() + v2.x(), this->y() + v2.y(), this->z(), this->w());
+		return Vector4(x() + v2.x(), y() + v2.y(), z(), w());
 	}
 
 	Vector4 Vector4::operator+(Vector3 v3)
 	{
-		return Vector4(this->x() + v3.x(), this->y() + v3.y(), this->z() + v3.z(), this->w());
+		return Vector4(x() + v3.x(), y() + v3.y(), z() + v3.z(), w());
 	}
 
 	Vector4 Vector4::operator+(Vector4 v4)
 	{
-		return Vector4(this->x() + v4.x(), this->y() + v4.y(), this->z() + v4.z(), this->w() + v4.w());
+		return Vector4(x() + v4.x(), y() + v4.y(), z() + v4.z(), w() + v4.w());
 	}
 
 	void Vector4::operator+=(Vector2 v2)
@@ -288,17 +288,17 @@ namespace poke {
 
 	Vector4 Vector4::operator-(Vector2 v2)
 	{
-		return Vector4(this->x() - v2.x(), this->y() - v2.y(), this->z(), this->w());
+		return Vector4(x() - v2.x(), y() - v2.y(), z(), w());
 	}
 
 	Vector4 Vector4::operator-(Vector3 v3)
 	{
-		return Vector4(this->x() - v3.x(), this->y() - v3.y(), this->z() - v3.z(), this->w());
+		return Vector4(x() - v3.x(), y() - v3.y(), z() - v3.z(), w());
 	}
 
 	Vector4 Vector4::operator-(Vector4 v4)
 	{
-		return Vector4(this->x() - v4.x(), this->y() - v4.y(), this->z() - v4.z(), this->w() - v4.w());
+		return Vector4(x() - v4.x(), y() - v4.y(), z() - v4.z(), w() - v4.w());
 	}
 
 	void Vector4::operator-=(Vector2 v2)
@@ -325,7 +325,7 @@ namespace poke {
 
 	Vector4 Vector4::operator*(float const & value)
 	{
-		return Vector4(this->x() * value, this->y() * value, this->z() * value, this->w() * value);
+		return Vector4(x() * value, y() * value, z() * value, w() * value);
 	}
 
 	void Vector4::operator*=(float const& value)
@@ -338,7 +338,7 @@ namespace poke {
 
 	Vector4 Vector4::operator/(float const & value)
 	{
-		return Vector4(this->x() / value, this->y() / value, this->z() / value, this->w() / value);
+		return Vector4(x() / value, y() / value, z() / value, w() / value);
 	}
 
 	void Vector4::operator/=(float const& value)
@@ -368,23 +368,23 @@ namespace poke {
 		return vector_[1];
 	}
 
-	Vector2Int Vector2Int::operator+(Vector2Int& v2)
+	Vector2Int Vector2Int::operator+(Vector2Int v2)
 	{
-		return Vector2Int(this->x() + v2.x(), this->y() + v2.y());
+		return Vector2Int(x() + v2.x(), y() + v2.y());
 	}
 
-	void Vector2Int::operator+=(Vector2Int& v2)
+	void Vector2Int::operator+=(Vector2Int v2)
 	{
 		vector_[0] += v2.x();
 		vector_[1] += v2.y();
 	}
 
-	Vector2Int Vector2Int::operator-(Vector2Int& v2)
+	Vector2Int Vector2Int::operator-(Vector2Int v2)
 	{
-		return Vector2Int(this->x - v2.x, this->y - v2.y);
+		return Vector2Int(x() - v2.x(), y() - v2.y());
 	}
 
-	void Vector2Int::operator-=(Vector2Int& v2)
+	void Vector2Int::operator-=(Vector2Int v2)
 	{
 		vector_[0] -= v2.x();
 		vector_[1] -= v2.y();
@@ -392,7 +392,7 @@ namespace poke {
 
 	Vector2 Vector2Int::operator*(float const & value)
 	{
-		return Vector2(this->x() * value, this->y() * value);
+		return Vector2(x() * value, y() * value);
 	}
 
 	void Vector2Int::operator*=(int const& value)
@@ -403,7 +403,7 @@ namespace poke {
 
 	Vector2 Vector2Int::operator/(float const & value)
 	{
-		return Vector2(this->x() / value, this->y() / value);
+		return Vector2(x() / value, y() / value);
 	}
 
 	void Vector2Int::operator/=(int const& value)
@@ -419,22 +419,20 @@ namespace poke {
 	
 	Vector2 Vector2Int::Normalize()
 	{
-		const float magnitude = this->GetMagnitude();
-
-		return Vector2(x() / magnitude, y() / magnitude);
+		return Vector2(x(), y()) / GetMagnitude();
 	}
 	
-	int Vector2Int::Cross(Vector2Int& v1, Vector2Int& v2)
+	int Vector2Int::Cross(Vector2Int v1, Vector2Int v2)
 	{
 		return (v1.x() * v2.y()) - (v1.y() * v2.x());
 	}
 	
-	float Vector2Int::GetDistance(Vector2Int & begin, Vector2Int & end)
+	float Vector2Int::GetDistance(Vector2Int begin, Vector2Int end)
 	{
 		return (end - begin).GetMagnitude();
 	}
 	
-	int Vector2Int::GetDistanceManhattan(Vector2Int & begin, Vector2Int & end)
+	int Vector2Int::GetDistanceManhattan(Vector2Int begin, Vector2Int end)
 	{
 		return abs(end.x() - begin.x() + end.y() - begin.y());
 	}
@@ -463,46 +461,46 @@ namespace poke {
 		return vector_[2];
 	}
 
-	Vector3Int Vector3Int::operator+(Vector2Int& v2)
+	Vector3Int Vector3Int::operator+(Vector2Int v2)
 	{
 		return Vector3Int(x() + v2.x(), y() + v2.y(), z());
 	}
 
-	Vector3Int Vector3Int::operator+(Vector3Int& v3)
+	Vector3Int Vector3Int::operator+(Vector3Int v3)
 	{
 		return Vector3Int(x() + v3.x(), y() + v3.y(), z() + v3.y());
 	}
 
-	void Vector3Int::operator+=(Vector2Int& v2)
+	void Vector3Int::operator+=(Vector2Int v2)
 	{
 		vector_[0] += v2.x();
 		vector_[1] += v2.y();
 	}
 
-	void Vector3Int::operator+=(Vector3Int& v3)
+	void Vector3Int::operator+=(Vector3Int v3)
 	{
 		vector_[0] += v3.x();
 		vector_[1] += v3.y();
 		vector_[2] += v3.z();
 	}
 
-	Vector3Int Vector3Int::operator-(Vector2Int& v2)
+	Vector3Int Vector3Int::operator-(Vector2Int v2)
 	{
 		return Vector3Int(x() - v2.x(), y() - v2.y(), z());
 	}
 
-	Vector3Int Vector3Int::operator-(Vector3Int& v3)
+	Vector3Int Vector3Int::operator-(Vector3Int v3)
 	{
 		return Vector3Int(x() - v3.x(), y() - v3.y(), z() - v3.y());
 	}
 
-	void Vector3Int::operator-=(Vector2Int& v2)
+	void Vector3Int::operator-=(Vector2Int v2)
 	{
 		vector_[0] -= v2.x();
 		vector_[1] -= v2.y();
 	}
 
-	void Vector3Int::operator-=(Vector3Int& v3)
+	void Vector3Int::operator-=(Vector3Int v3)
 	{
 		vector_[0] -= v3.x();
 		vector_[1] -= v3.y();
@@ -548,12 +546,12 @@ namespace poke {
 		return Vector3Int(v1.y() * v2.z() - v1.z() * v2.y(), v1.z() * v2.x() - v1.x() * v2.z(), v1.x() * v2.y() - v1.y() * v2.x());
 	}
 	
-	float Vector3Int::GetDistance(Vector3Int & begin, Vector3Int & end)
+	float Vector3Int::GetDistance(Vector3Int begin, Vector3Int end)
 	{
 		return (end - begin).GetMagnitude();
 	}
 	
-	int Vector3Int::GetDistanceManhattan(Vector3Int & begin, Vector3Int & end)
+	int Vector3Int::GetDistanceManhattan(Vector3Int begin, Vector3Int end)
 	{
 		return abs(end.x() - begin.x() + end.y() - begin.y() + end.z() - begin.z());
 	}
@@ -590,17 +588,17 @@ namespace poke {
 		return vector_[3];
 	}
 
-	Vector4Int Vector4Int::operator+(Vector2Int& v2)
+	Vector4Int Vector4Int::operator+(Vector2Int v2)
 	{
 		return Vector4Int(x() + v2.x(), y() + y(), z(), w());
 	}
 	
-	Vector4Int Vector4Int::operator+(Vector3Int& v3)
+	Vector4Int Vector4Int::operator+(Vector3Int v3)
 	{
 		return Vector4Int(x() + v3.x(), y() + v3.y(), z() + v3.z(), w());
 	}
 	
-	Vector4Int Vector4Int::operator+(Vector4Int& v4)
+	Vector4Int Vector4Int::operator+(Vector4Int v4)
 	{
 		return Vector4Int(x() + v4.x(), y() + v4.y(), z() + v4.z(), w() + v4.w());
 	}
@@ -626,17 +624,17 @@ namespace poke {
 		vector_[3] += v4.w();
 	}
 
-	Vector4Int Vector4Int::operator-(Vector2Int& v2)
+	Vector4Int Vector4Int::operator-(Vector2Int v2)
 	{
 		return Vector4Int(x() - v2.x(), y() - v2.y(), z(), w());
 	}
 	
-	Vector4Int Vector4Int::operator-(Vector3Int& v3)
+	Vector4Int Vector4Int::operator-(Vector3Int v3)
 	{
 		return Vector4Int(x() - v3.x(), y() - v3.y(), z() - v3.z(), w());
 	}
 	
-	Vector4Int Vector4Int::operator-(Vector4Int& v4)
+	Vector4Int Vector4Int::operator-(Vector4Int v4)
 	{
 		return Vector4Int(x() - v4.x(), y() - v4.y(), z() - v4.z(), w() - v4.w());
 	}
@@ -707,23 +705,23 @@ namespace poke {
 		return vector_[1];
 	}
 
-	Vector2Short Vector2Short::operator+(Vector2Short& v2)
+	Vector2Short Vector2Short::operator+(Vector2Short v2)
 	{
 		return Vector2Short(x() + v2.x(), y() + v2.y());
 	}
 
-	void Vector2Short::operator+=(Vector2Short& v2)
+	void Vector2Short::operator+=(Vector2Short v2)
 	{
 		vector_[0] += v2.x();
 		vector_[1] += v2.y();
 	}
 
-	Vector2Short Vector2Short::operator-(Vector2Short& v2)
+	Vector2Short Vector2Short::operator-(Vector2Short v2)
 	{
 		return Vector2Short(x() - v2.x(), y() - v2.y());
 	}
 
-	void Vector2Short::operator-=(Vector2Short& v2)
+	void Vector2Short::operator-=(Vector2Short v2)
 	{
 		vector_[0] -= v2.x();
 		vector_[1] -= v2.y();
@@ -761,17 +759,17 @@ namespace poke {
 		return Vector2(x(), y()) / GetMagnitude();
 	}
 	
-	short Vector2Short::Cross(Vector2Short& v1, Vector2Short& v2)
+	short Vector2Short::Cross(Vector2Short v1, Vector2Short v2)
 	{
 		return (v1.x() * v2.y()) - (v1.y() * v2.x());
 	}
-	
-	float Vector2Short::GetDistance(Vector2Short & begin, Vector2Short & end)
+
+	float Vector2Short::GetDistance(Vector2Short begin, Vector2Short end)
 	{
 		return (end - begin).GetMagnitude();
 	}
 	
-	float Vector2Short::GetDistanceManhattan(Vector2Short & begin, Vector2Short & end)
+	float Vector2Short::GetDistanceManhattan(Vector2Short begin, Vector2Short end)
 	{
 		return abs(end.x() - begin.x() + end.y() - begin.y());
 	}
@@ -800,46 +798,46 @@ namespace poke {
 		return vector_[2];
 	}
 
-	Vector3Short Vector3Short::operator+(Vector2Short& v2)
+	Vector3Short Vector3Short::operator+(Vector2Short v2)
 	{
 		return Vector3Short(x() + v2.x(), y() + v2.y(), z());
 	}
 
-	Vector3Short Vector3Short::operator+(Vector3Short& v3)
+	Vector3Short Vector3Short::operator+(Vector3Short v3)
 	{
 		return Vector3Short(x() + v3.x(), y() + v3.y(), z() + v3.z());
 	}
 
-	void Vector3Short::operator+=(Vector2Short& v2)
+	void Vector3Short::operator+=(Vector2Short v2)
 	{
 		vector_[0] += v2.x();
 		vector_[1] += v2.y();
 	}
 
-	void Vector3Short::operator+=(Vector3Short& v3)
+	void Vector3Short::operator+=(Vector3Short v3)
 	{
 		vector_[0] += v3.x();
 		vector_[1] += v3.y();
 		vector_[2] += v3.z();
 	}
 
-	Vector3Short Vector3Short::operator-(Vector2Short& v2)
+	Vector3Short Vector3Short::operator-(Vector2Short v2)
 	{
 		return Vector3Short(x() - v2.x(), y() - v2.y(), z());
 	}
 
-	Vector3Short Vector3Short::operator-(Vector3Short& v3)
+	Vector3Short Vector3Short::operator-(Vector3Short v3)
 	{
 		return Vector3Short(x() - v3.x(), y() - v3.y(), z() - v3.z());
 	}
 
-	void Vector3Short::operator-=(Vector2Short& v2)
+	void Vector3Short::operator-=(Vector2Short v2)
 	{
 		vector_[0] -= v2.x();
 		vector_[1] -= v2.y();
 	}
 
-	void Vector3Short::operator-=(Vector3Short& v3)
+	void Vector3Short::operator-=(Vector3Short v3)
 	{
 		vector_[0] -= v3.x();
 		vector_[1] -= v3.y();
@@ -885,12 +883,12 @@ namespace poke {
 		return Vector3Short(v1.y() * v2.z() - v1.z() * v2.y(), v1.z() * v2.x() - v1.x() * v2.z(), v1.x() * v2.y() - v1.y() * v2.x());
 	}
 
-	float Vector3Short::GetDistance(Vector3Short & begin, Vector3Short & end)
+	float Vector3Short::GetDistance(Vector3Short begin, Vector3Short end)
 	{
 		return (end - begin).GetMagnitude();
 	}
 
-	short Vector3Short::GetDistanceManhattan(Vector3Short & begin, Vector3Short & end)
+	short Vector3Short::GetDistanceManhattan(Vector3Short begin, Vector3Short end)
 	{
 		return abs(end.x() - begin.x() + end.y() - begin.y() + end.z() - begin.z());
 	}
@@ -925,17 +923,17 @@ namespace poke {
 		return vector_[3];
 	}
 
-	Vector4Short Vector4Short::operator+(Vector2Short& v2)
+	Vector4Short Vector4Short::operator+(Vector2Short v2)
 	{
 		return Vector4Short(x() + v2.x(), y() + v2.y(), z(), w());
 	}
 
-	Vector4Short Vector4Short::operator+(Vector3Short& v3)
+	Vector4Short Vector4Short::operator+(Vector3Short v3)
 	{
 		return Vector4Short(x() + v3.x(), y() + v3.y(), z() + v3.z(), w());
 	}
 	 
-	Vector4Short Vector4Short::operator+(Vector4Short& v4)
+	Vector4Short Vector4Short::operator+(Vector4Short v4)
 	{
 		return Vector4Short(x() + v4.x(), y() + v4.y(), z() + v4.z(), w() + v4.w());
 	}
@@ -961,17 +959,17 @@ namespace poke {
 		vector_[3] += v4.w();
 	}
 
-	Vector4Short Vector4Short::operator-(Vector2Short& v2)
+	Vector4Short Vector4Short::operator-(Vector2Short v2)
 	{
 		return Vector4Short(x() - v2.x(), y() - v2.y(), z(), w());
 	}
 
-	Vector4Short Vector4Short::operator-(Vector3Short& v3)
+	Vector4Short Vector4Short::operator-(Vector3Short v3)
 	{
 		return Vector4Short(x() - v3.x(), y() - v3.y(), z() - v3.z(), w());
 	}
 
-	Vector4Short Vector4Short::operator-(Vector4Short& v4)
+	Vector4Short Vector4Short::operator-(Vector4Short v4)
 	{
 		return Vector4Short(x() - v4.x(), y() - v4.y(), z() - v4.z(), w() - v4.w());
 	}
