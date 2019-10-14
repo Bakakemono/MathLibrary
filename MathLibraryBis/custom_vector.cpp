@@ -4,7 +4,7 @@
 namespace poke {
 #pragma region Vector2
 	Vector2::Vector2(float x, float y)
-	{
+	{						
 		vector_[0] = x;
 		vector_[1] = y;
 	}
@@ -158,7 +158,7 @@ namespace poke {
 		vector_[2] -= v3.z();
 	}
 
-	Vector3 Vector3::operator*(float const & value)
+	Vector3 Vector3::operator*(float const& value)
 	{
 		return Vector3(x() * value, y() * value, z() * value);
 	}
@@ -434,7 +434,10 @@ namespace poke {
 	
 	int Vector2Int::GetDistanceManhattan(Vector2Int begin, Vector2Int end)
 	{
-		return abs(end.x() - begin.x() + end.y() - begin.y());
+		int result = end.x() - begin.x() + end.y() - begin.y();
+		if (result < 0)
+			result *= -1;
+		return result;
 	}
 #pragma endregion 
 
@@ -553,7 +556,10 @@ namespace poke {
 	
 	int Vector3Int::GetDistanceManhattan(Vector3Int begin, Vector3Int end)
 	{
-		return abs(end.x() - begin.x() + end.y() - begin.y() + end.z() - begin.z());
+		int result = end.x() - begin.x() + end.y() - begin.y() + end.z() - begin.z();
+		if (result < 0)
+			result *= -1;
+		return result;
 	}
 
 #pragma endregion 
@@ -771,7 +777,10 @@ namespace poke {
 	
 	float Vector2Short::GetDistanceManhattan(Vector2Short begin, Vector2Short end)
 	{
-		return abs(end.x() - begin.x() + end.y() - begin.y());
+		short result = end.x() - begin.x() + end.y() - begin.y();
+		if (result < 0)
+			result *= -1;
+		return result;
 	}
 #pragma endregion 
 
@@ -890,7 +899,10 @@ namespace poke {
 
 	short Vector3Short::GetDistanceManhattan(Vector3Short begin, Vector3Short end)
 	{
-		return abs(end.x() - begin.x() + end.y() - begin.y() + end.z() - begin.z());
+		short result = end.x() - begin.x() + end.y() - begin.y() + end.z() - begin.z();
+		if (result < 0)
+			result *= -1;
+		return result;
 	}
 #pragma endregion 
 

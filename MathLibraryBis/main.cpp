@@ -6,10 +6,10 @@
 
 int main()
 {
-	poke::Vector3 test(1, 1, 1);
-	test.x() = 3;
+	//poke::Vector3 test(1, 1, 1);
+	//test.x() = 3;
 
-	std::cout << test.x() << "\n";
+	//std::cout << test.x() << "\n";
 	
 	system("pause");
 	return EXIT_SUCCESS;
