@@ -222,7 +222,7 @@ namespace poke {
 		vector_[3] = w;
 	}
 
-	Vector4::Vector4(std::array<float&, 4> newArray)
+	Vector4::Vector4(std::array<float, 4> newArray)
 	{
 		vector_[0] = newArray[0];
 		vector_[1] = newArray[1];

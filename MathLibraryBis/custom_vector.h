@@ -76,7 +76,7 @@ namespace poke {
 	class Vector4 {
 	public:
 		Vector4(float x, float y, float z, float w);
-		Vector4(std::array<float&, 4> newArray);
+		Vector4(std::array<float, 4> newArray);
 
 		float& x();
 		float& y();
